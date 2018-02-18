@@ -31,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/textView"
             android:layout_alignRight="@+id/textView"
+            android:onClick="fungsiRadiobutton"
             android:layout_below="@+id/textView"
             android:text="Dine in" />
 
@@ -40,6 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/rbdinein"
             android:layout_alignStart="@+id/rbdinein"
+            android:onClick="fungsiRadiobutton"
             android:layout_below="@+id/rbdinein"
             android:text="Take Away" />
 
@@ -53,6 +55,7 @@
         android:layout_below="@+id/radioGroup"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="11dp"
+        android:onClick="fungsiButton"
         android:text="Pesan Sekarang" />
 
     <ImageView

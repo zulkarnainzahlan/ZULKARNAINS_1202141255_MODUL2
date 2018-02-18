@@ -17,6 +17,9 @@ public class MenuUtama extends AppCompatActivity {
     RadioButton rb2;
     Button button;
 
+    private String dine;
+    private String take;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,50 +29,71 @@ public class MenuUtama extends AppCompatActivity {
         rb1 = (RadioButton) findViewById(R.id.rbdinein);
         rb2 = (RadioButton) findViewById(R.id.rbtakeaway);
         button = (Button) findViewById(R.id.btpesan);
-        myLister();
+        Toast welcome = Toast.makeText(this,"Zulkarnain Sahlan_1202141255",Toast.LENGTH_SHORT);
+        welcome.show();
     }
 
-    public void myLister(){
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                        switch (i){
-                            case R.id.rbdinein:
-                                myLister();
-                                Toast.makeText(MenuUtama.this ,"Dine In", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(MenuUtama.this , DineIn.class));
-                                break;
-                            case R.id.rbtakeaway:
-                                myLister();
-                                Toast.makeText(MenuUtama.this ,"Take Away", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(MenuUtama.this , TakeAway.class));
-                                break;
-                        }
-                    }
-                });
+    public void fungsiRadiobutton(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.rbdinein:
+                if (checked)
+                // dine in
+                {
+                    dine = (String)getString(R.string.dine_in);
+                    Toast warning = Toast.makeText(this,"Dine In",Toast.LENGTH_SHORT);
+                    warning.show();
+                    startActivity(new Intent(MenuUtama.this , DineIn.class));
+                }
+                break;
+            case R.id.rbtakeaway:
+                if (checked)
+                // take away
+                {
+                    take = (String)getString(R.string.take_away);
+                    Toast warning = Toast.makeText(this,"Take Away",Toast.LENGTH_SHORT);
+                    warning.show();
+                    startActivity(new Intent(MenuUtama.this , TakeAway.class));
+                }
+                break;
+            default:
+                break;
+        }
+    }
 
-//                int rgs_id = radioGroup.getCheckedRadioButtonId();
-//
-//                if(rgs_id==2){
-//
-//                    myRadiobtn = (RadioButton)findViewById(rgs_id);
-//                    Toast.makeText(MenuUtama.this ,myRadiobtn.getText().toString(), Toast.LENGTH_LONG).show();
-//                    //startActivity(new Intent(MenuUtama.this ,rb1.getText().toString(),Toast DineIn.class));
-//                    startActivity(new Intent(MenuUtama.this , DineIn.class)); //test
-//
-//                }else{
-//                    myRadiobtn = (RadioButton)findViewById(rgs_id);
-//                    Toast.makeText(MenuUtama.this ,myRadiobtn.getText().toString(), Toast.LENGTH_LONG).show();
-//
-//                    startActivity(new Intent(MenuUtama.this , TakeAway.class));
-//                }
+    public void fungsiButton(View view) {
 
-            }
-        });
+        boolean checked = ((RadioButton) view).isChecked();
+        switch(view.getId()) {
+            case R.id.rbdinein:
+                if (checked)
+                // dine in
+                {
+                    startActivity(new Intent(MenuUtama.this , DineIn.class));
+                }
+                break;
+            case R.id.rbtakeaway:
+                if (checked)
+                // take away
+                {
+                    startActivity(new Intent(MenuUtama.this , TakeAway.class));
+                }
+                break;
+        }
+//        if (dine!=null){
+//            Intent dine = new Intent(this, DineIn.class);
+//            startActivity(dine);
+//        }else if (take!=null){
+//            Intent take = new Intent(this, TakeAway.class);
+//            startActivity(take);
+//        }else{
+//            Toast warning = Toast.makeText(this,"Nothing is chosen",Toast.LENGTH_LONG);
+//            warning.show();
+//        }
+        return;
     }
 }
