@@ -57,6 +57,6 @@ public class DineIn extends AppCompatActivity
 
     public void pilihPesananLagi(View view) {
         startActivity(new Intent(DineIn.this , DaftarMenu.class));
-        //ini digunakan untuk melakukan intent ke DaftarMenu.class
+        //ini digunakan untuk melakukan intent ke DaftarMenu.class //TESR
     }
 }
