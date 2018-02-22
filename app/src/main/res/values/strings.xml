@@ -6,6 +6,20 @@
         <item>Meja 3</item>
         <item>Meja 4</item>
     </string-array>
+    
+    <string-array name="menu_makan">
+        <item> nasi goreng</item>
+        <item> nasi ayam</item>
+        <item> nasi kuah</item>
+    </string-array>
+
+    <string-array name="harga">
+        <item>10 000</item>
+        <item>12 000</item>
+        <item>14 000</item>
+    </string-array>
     <string name="dine_in">Dine In</string>
     <string name="take_away">Take Away</string>
+    <string name="textview">TextView</string>
+    <string name="todo">TODO</string>
 </resources>

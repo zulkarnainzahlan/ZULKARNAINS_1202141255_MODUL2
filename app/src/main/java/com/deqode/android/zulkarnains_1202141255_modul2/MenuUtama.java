@@ -12,13 +12,11 @@ import android.widget.Toast;
 public class MenuUtama extends AppCompatActivity {
 
     RadioGroup radioGroup;
-    RadioButton myRadiobtn;
     RadioButton rb1;
     RadioButton rb2;
     Button button;
-
-    private String dine;
-    private String take;
+    boolean dineIn;
+    boolean way;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,71 +27,47 @@ public class MenuUtama extends AppCompatActivity {
         rb1 = (RadioButton) findViewById(R.id.rbdinein);
         rb2 = (RadioButton) findViewById(R.id.rbtakeaway);
         button = (Button) findViewById(R.id.btpesan);
-        Toast welcome = Toast.makeText(this,"Zulkarnain Sahlan_1202141255",Toast.LENGTH_SHORT);
-        welcome.show();
+        dineIn = false;
+        way = false;
     }
 
 
-
-    public void fungsiRadiobutton(View view) {
+    public void onRadioButtonClicked (View view){
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
+        //Toast.makeText(MenuUtama.this, "Dine In"+checked, Toast.LENGTH_SHORT).show();
         // Check which radio button was clicked
-        switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.rbdinein:
-                if (checked)
-                // dine in
-                {
-                    dine = (String)getString(R.string.dine_in);
-                    Toast warning = Toast.makeText(this,"Dine In",Toast.LENGTH_SHORT);
-                    warning.show();
-                    startActivity(new Intent(MenuUtama.this , DineIn.class));
+                if(checked) {
+                    dineIn = true;//membuat check di dine in
                 }
+
                 break;
             case R.id.rbtakeaway:
-                if (checked)
-                // take away
-                {
-                    take = (String)getString(R.string.take_away);
-                    Toast warning = Toast.makeText(this,"Take Away",Toast.LENGTH_SHORT);
-                    warning.show();
-                    startActivity(new Intent(MenuUtama.this , TakeAway.class));
-                }
-                break;
-            default:
+                if(checked){
+                    way=true;} //membuat check di take away
+
                 break;
         }
+
     }
 
-    public void fungsiButton(View view) {
+    public void fungsiButton (View view){
 
-        boolean checked = ((RadioButton) view).isChecked();
-        switch(view.getId()) {
-            case R.id.rbdinein:
-                if (checked)
-                // dine in
-                {
-                    startActivity(new Intent(MenuUtama.this , DineIn.class));
-                }
-                break;
-            case R.id.rbtakeaway:
-                if (checked)
-                // take away
-                {
-                    startActivity(new Intent(MenuUtama.this , TakeAway.class));
-                }
-                break;
+        if(dineIn){//apabila dine in yg ke check laksanakan code ini
+
+            Toast.makeText(MenuUtama.this, "Dine In", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(MenuUtama.this, DineIn.class));
+        }else if(way){//apabila take away yg ke check laksanakan code ini
+
+            Toast.makeText(MenuUtama.this, "Take Way", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(MenuUtama.this, TakeAway.class));
         }
-//        if (dine!=null){
-//            Intent dine = new Intent(this, DineIn.class);
-//            startActivity(dine);
-//        }else if (take!=null){
-//            Intent take = new Intent(this, TakeAway.class);
-//            startActivity(take);
-//        }else{
-//            Toast warning = Toast.makeText(this,"Nothing is chosen",Toast.LENGTH_LONG);
-//            warning.show();
-//        }
-        return;
+
+
+
     }
+
+
 }
